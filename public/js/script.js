@@ -8,5 +8,28 @@ next.addEventListener('click', function(){
 
 prev.addEventListener('click', function(){
     let items = document.querySelectorAll('.item')
-    document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+    document.querySelector('.slide').prepend(items[items.length - 1]) 
+})
+
+
+// setting owl carousel
+
+
+$('#top-movies-slide').owlCarousel({
+    items: 6,
+    dots: false,
+    loop: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    responsive: {
+        500: {
+            items: 3
+        },
+        1280: {
+            items: 4
+        },
+        1600: {
+            items: 6
+        }
+    }
 })
