@@ -5,21 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
 </head>
+<style>
+  .movie-image img {
+    width: 250px;   
+    height: auto; 
+    border-radius: 8px; 
+}
+
+</style>
 <body>
     <%- include("partials/header.ejs") %>  
-    <h1>movies</h1> 
+    <h1>Movies</h1> 
 
     <div class="movie-container">
         <% if (movies && movies.length > 0) { %>
           <% movies.forEach(movie => { %>
             <div class="movie-item">
               <div class="movie-image">
-                <img src="<%= movie.primaryImage.url %>" alt="<%= movie.titleText.text %>">
+                <% if (movie.poster_path) { %>
+                  <img src="<%= movie.poster_path %>" alt="<%= movie.title ? movie.title : 'No title available' %>">
+                <% } else { %>
+                  <img src="/path/to/default-image.jpg" alt="<%= movie.title ? movie.title : 'No title available' %>">
+                <% } %>
               </div>
               <div class="movie-details">
-                <h2><%= movie.titleText.text %></h2>
-                <p><strong>Type:</strong> <%= movie.titleType.text %></p>
-                <p><strong>Release Year:</strong> <%= movie.releaseYear.year %></p>
+                <h2><%= movie.title ? movie.title : 'No title available' %></h2>
+                <p><strong>Genres:</strong> <%= movie.genres ? movie.genres : 'N/A' %></p>
+                <p><strong>Release Date:</strong> <%= movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A' %></p>
               </div>
             </div>
           <% }) %>
@@ -31,7 +43,3 @@
     <%- include("partials/footer.ejs") %>  
 </body>
 </html>
-
-
-
-

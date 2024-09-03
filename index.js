@@ -15,30 +15,27 @@ app.get("/", (req, res) => {
 });
 // searh movies 
 app.get('/search', async (req, res) => {
-  const query = req.query.query;  // Get the search query from the request
+  const query = req.query.query; 
+  
   try {
     const options = {
       method: 'GET',
-      url: 'https://moviesdatabase.p.rapidapi.com/titles',
+      url: `https://moviedatabase8.p.rapidapi.com/Search/${encodeURIComponent(query)}`, // Incorporate the search query into the URL
       headers: {
         'x-rapidapi-key': '46ca2065f1mshd2c5a311fcc25afp104658jsn4c2605f44c44',
-        'x-rapidapi-host': 'moviesdatabase.p.rapidapi.com'
-      },
-      params: {
-        query: query,
-        limit: 10
+        'x-rapidapi-host': 'moviedatabase8.p.rapidapi.com'
       }
     };
 
     const response = await axios.request(options);
-    const movies = response.data.results; // Get the movies from the API response
-
-    // Render the 'index' EJS template, passing the 'movies' variable
+    const movies = response.data; 
+   
     res.render('movies', { movies: movies });
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred while searching for movies.');
   }
+
 });
 
 
