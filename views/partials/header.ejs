@@ -20,9 +20,22 @@
                 
                 </ul>
             </div>
+            <!-- <div class="search-icon">
+                <input type="text" id="search" type="submit" formaction="search">
+               
+                <i class="fa-solid fa-magnifying-glass" ></i>
+            </div> -->
             <div class="search-icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+                <form action="/search" method="GET" id="searchForm">
+                  <input type="text" id="search" name="query" placeholder="Search for a movie">
+                  <button type="submit" class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              
+
+              
 
         
             

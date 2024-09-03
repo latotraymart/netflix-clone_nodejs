@@ -34,8 +34,22 @@ body{
     
     }
     .search-icon {
-        margin-left: 950px; 
-        margin-top: 10px; 
+        display: flex;
+        align-items: center; 
+        width: 250px;
+        gap: 10px;
+        margin-left: 880px; 
+        margin-top: 5px; 
+        width: 50%;
       }
 
-    
+      .search-icon input {
+        border: none;            
+        outline: none;            
+        padding: 5px;            
+      }
+      .search-button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }

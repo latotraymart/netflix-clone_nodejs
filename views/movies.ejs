@@ -8,6 +8,26 @@
 <body>
     <%- include("partials/header.ejs") %>  
     <h1>movies</h1> 
+
+    <div class="movie-container">
+        <% if (movies && movies.length > 0) { %>
+          <% movies.forEach(movie => { %>
+            <div class="movie-item">
+              <div class="movie-image">
+                <img src="<%= movie.primaryImage.url %>" alt="<%= movie.titleText.text %>">
+              </div>
+              <div class="movie-details">
+                <h2><%= movie.titleText.text %></h2>
+                <p><strong>Type:</strong> <%= movie.titleType.text %></p>
+                <p><strong>Release Year:</strong> <%= movie.releaseYear.year %></p>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p>No movies found.</p>
+        <% } %>
+      </div>
+      
     <%- include("partials/footer.ejs") %>  
 </body>
 </html>
